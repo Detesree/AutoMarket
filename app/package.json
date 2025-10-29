@@ -1,0 +1,14 @@
+{
+  "name": "automarket-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.0",
+    "prom-client": "^14.0.0"
+  }
+}

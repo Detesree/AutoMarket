@@ -1,0 +1,28 @@
+# docker-compose.yml
+version: "3.8"
+services:
+  app:
+    build: .
+    container_name: automarket_app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - app
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
